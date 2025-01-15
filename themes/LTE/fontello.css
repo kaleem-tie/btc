@@ -1,0 +1,100 @@
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?29850135#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-access_time:before { content: '\e800'; } /* '' */
+.icon-account_balance:before { content: '\e801'; } /* '' */
+.icon-account_box:before { content: '\e802'; } /* '' */
+.icon-account_balance_wallet:before { content: '\e803'; } /* '' */
+.icon-account_circle:before { content: '\e804'; } /* '' */
+.icon-add_shopping_cart:before { content: '\e805'; } /* '' */
+.icon-add:before { content: '\e806'; } /* '' */
+.icon-apps:before { content: '\e807'; } /* '' */
+.icon-assignment:before { content: '\e808'; } /* '' */
+.icon-assignment_ind:before { content: '\e809'; } /* '' */
+.icon-attach_money:before { content: '\e80a'; } /* '' */
+.icon-attachment:before { content: '\e80b'; } /* '' */
+.icon-av_timer:before { content: '\e80c'; } /* '' */
+.icon-burst_mode:before { content: '\e80d'; } /* '' */
+.icon-chrome_reader_mode:before { content: '\e80e'; } /* '' */
+.icon-content_paste:before { content: '\e80f'; } /* '' */
+.icon-crop_original:before { content: '\e810'; } /* '' */
+.icon-data_usage:before { content: '\e811'; } /* '' */
+.icon-description:before { content: '\e812'; } /* '' */
+.icon-dialpad:before { content: '\e813'; } /* '' */
+.icon-done:before { content: '\e814'; } /* '' */
+.icon-done_all:before { content: '\e815'; } /* '' */
+.icon-donut_large:before { content: '\e816'; } /* '' */
+.icon-donut_small:before { content: '\e817'; } /* '' */
+.icon-euro_symbol:before { content: '\e818'; } /* '' */
+.icon-edit:before { content: '\e819'; } /* '' */
+.icon-event_note:before { content: '\e81a'; } /* '' */
+.icon-exposure:before { content: '\e81b'; } /* '' */
+.icon-local_atm:before { content: '\e81c'; } /* '' */
+.icon-location_city:before { content: '\e81d'; } /* '' */
+.icon-local_shipping:before { content: '\e81e'; } /* '' */
+.icon-local_printshop:before { content: '\e81f'; } /* '' */
+.icon-lock_outline:before { content: '\e820'; } /* '' */
+.icon-monetization_on:before { content: '\e821'; } /* '' */
+.icon-mode_edit:before { content: '\e822'; } /* '' */
+.icon-more_vert:before { content: '\e823'; } /* '' */
+.icon-note_add:before { content: '\e824'; } /* '' */
+.icon-pie_chart_outlined:before { content: '\e825'; } /* '' */
+.icon-power_settings_new:before { content: '\e826'; } /* '' */
+.icon-receipt:before { content: '\e827'; } /* '' */
+.icon-restore:before { content: '\e828'; } /* '' */
+.icon-settings:before { content: '\e829'; } /* '' */
+.icon-storage:before { content: '\e82a'; } /* '' */
+.icon-update:before { content: '\e82b'; } /* '' */
+.icon-textsms:before { content: '\e82c'; } /* '' */
+.icon-today:before { content: '\e82d'; } /* '' */
+.icon-user:before { content: '\e82e'; } /* '' */
+.icon-th-large:before { content: '\e82f'; } /* '' */
+.icon-picture:before { content: '\e830'; } /* '' */
+.icon-ok:before { content: '\e831'; } /* '' */
+.icon-cancel:before { content: '\e832'; } /* '' */
+.icon-folder-open-empty:before { content: '\f115'; } /* '' */
+.icon-file-pdf:before { content: '\f1c1'; } /* '' */

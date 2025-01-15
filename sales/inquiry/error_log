@@ -1,0 +1,1 @@
+[13-Feb-2023 12:35:32 UTC] PHP Fatal error:  Out of memory (allocated 1835008) (tried to allocate 72 bytes) in /home/xseedtech/public_html/id_design/includes/session.inc on line 32

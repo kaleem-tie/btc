@@ -1,0 +1,506 @@
+Project: BAHANIS
+
+
+//sameer From 15/07/2024 
+
+
+1. Item Adjustment Note
+Files: 
+\\server-pc\htdocs\bahanis\inventory\adjustments.php
+inventory\includes\item_adjustments_ui.inc
+
+2. Material Indent Request
+Files: 
+\\server-pc\htdocs\bahanis\inventory\material_indent_request.php
+inventory\includes\matirial_indent_ui.inc
+
+3. Inventory Location Transfers
+Files: 
+\\server-pc\htdocs\bahanis\inventory\transfers.php
+inventory\includes\stock_transfers_ui.inc
+
+
+4. Bank Account Payment entry --- line items are loading
+Files:
+\\server-pc\htdocs\bahanis\gl\gl_bank.php
+gl\includes\ui\gl_bank_ui.inc
+
+
+5. Bank Account Deposit Entry -- line items are loading
+Files:
+\\server-pc\htdocs\bahanis\gl\gl_bank.php
+gl\includes\ui\gl_bank_ui.inc
+
+
+6. Bank Account Transfers
+Files:
+\\server-pc\htdocs\bahanis\gl\bank_transfer.php
+
+7. Supplier Payment Entry
+Files:
+\\server-pc\htdocs\bahanis\purchasing\supplier_payment.php
+
+8. Suppliers Credit Note
+Files:
+\\server-pc\htdocs\bahanis\purchasing\supplier_credit.php
+\\server-pc\htdocs\bahanis\purchasing\includes\ui\invoice_ui.inc
+
+9. Suppliers Direct Credit Note
+Files:
+\\server-pc\htdocs\bahanis\purchasing\supplier_direct_credit_note.php
+\\server-pc\htdocs\bahanis\purchasing\includes\ui\invoice_ui.inc
+
+10. Customer Payment Entry
+Files:
+\\server-pc\htdocs\bahanis\sales\customer_payments.php
+
+11. Suppliers PDC Entry
+Files:
+\\server-pc\htdocs\bahanis\purchasing\supplier_pdc.php
+
+
+\\server-pc\htdocs\bahanis\gl\includes\ui\multi_cash_bill_ui.inc
+\\server-pc\htdocs\bahanis\includes\ui\ui_lists.inc
+
+12. Direct Invoice entry screen
+\\server-pc\htdocs\bahanis\sales\sales_order_entry.php
+\\server-pc\htdocs\bahanis\sales\includes\ui\sales_order_ui.inc
+\\server-pc\htdocs\bahanis\sales\includes\sales_db.inc
+
+13. Supplier New format Report:
+\\server-pc\htdocs\bahanis\reporting\reports_main.php
+\\server-pc\htdocs\bahanis\reporting\rep2100.php
+\\server-pc\htdocs\bahanis\reporting\includes\header26.inc
+bahanis\purchasing\inquiry\supplier_inquiry.php
+
+14.Completed the General Ledger transaction report as per given format
+
+\\server-pc\htdocs\bahanis\reporting\reports_main.php
+\\server-pc\htdocs\bahanis\reporting\rep712.php
+
+
+Added In ui_list only one funcion bank_accounts_list_trans, bank_accounts_list_trans_cells, bank_accounts_list_trans_row
+
+
+05-08-2024
+
+//---UPLOADED---//
+
+For Transaction Supplier Credit Note: 
+\\SERVER-PC\htdocs\bahanis\purchasing\includes\ui\invoice_ui.inc 
+function display_gl_items(&$supp_trans, $mode=0) -> Commented 547, 548 line
+
+
+For Supplier Payment Entry
+\\SERVER-PC\htdocs\bahanis\purchasing\supplier_payment.php -> line 430 modified
+\\SERVER-PC\htdocs\bahanis\purchasing\includes\db\supp_trans_db.inc -> function get_supp_trans
+
+
+For Customer PDC
+\\SERVER-PC\htdocs\bahanis\sales\customer_pdc.php
+
+//------------------------------------------------------------------//
+// RAJESH  22 & 23-08-2024
+1.Added "Delivery Terms" in Sales Quotation Entry --> "delivery_terms"
+  DB Changes
+  1.Add "delivery_terms" field in "0_sales_orders" table
+  Files:
+  1.sales/sales_order_entry.php
+  2.sales/includes/cart_class.inc
+  3.sales/includes/ui/sales_order_ui.inc
+  4.sales/includes/db/sales_order_db.inc
+  5.sales/view/view_sales_order.php
+ 
+1.Added "Delivery Terms" in Purchase Order Entry --> "delivery_terms"
+  DB Changes
+  1.Add "delivery_terms" field in "0_purch_orders" table
+  Files:
+  1.purchasing/po_entry_items.php
+  2.purchasing/includes/po_class.inc
+  3.purchasing/includes/ui/po_ui.inc
+  4.purchasing/includes/db/po_db.inc
+ 
+1.Sales Quotation Report 
+  1.reporting/includes/pdf_report.inc  --> "header71"
+  2.reporting/includes/header71.inc
+  3.reporting/includes/doctext.inc     --> "ST_SALESQUOTE"
+  4.reporting/rep111.php
+  5.sales/includes/db/sales_order_db.inc  --> "cust_code"
+    get_sales_order_header --> 
+ 
+2.Delivery format changes
+  1.reporting/includes/header68.inc
+  2.reporting/includes/doctext.inc     --> "ST_CUSTDELIVERY"
+  3.reporting/rep110.php
+ 
+3.Purchase Order Report changes 
+  1.reporting/includes/header22.inc
+  2.reporting/includes/doctext.inc     --> "ST_PURCHORDER"
+  3.reporting/rep209.php
+  
+  
+4.Cheque No. Unique validation below transactions 
+Files:
+1.Customer PDC Entry
+  1.sales/includes/db/sm_collection_db.inc  (Add below functions)
+    function check_exists_customer_pdc_cheque_no(
+	function get_exists_customer_pdc_cheque_no(
+  2.sales/customer_pdc.php 
+    ctrl+F --> check_exists_customer_pdc_cheque_no  and add the validation
+2.Customer Payment Entry
+  1.gl\includes\db\gl_db_bank_trans.inc  (Add below functions)
+    function check_exists_bank_payment_cheque_no(
+	function get_exists_bank_payment_cheque_no(
+  2.sales/customer_payments.php 	
+     ctrl+F --> check_exists_bank_payment_cheque_no and add the validation
+3.Supplier PDC Entry
+  1.purchasing/includes/db/supp_pdc_db.inc  (Add below functions)
+    function check_exists_supplier_pdc_cheque_no(
+	function get_exists_supplier_pdc_cheque_no(
+  2.purchasing/supplier_pdc.php
+    ctrl+F --> get_exists_supplier_pdc_cheque_no  and add the validation
+
+4.Supplier Payment Entry
+   1.purchasing/supplier_payment.php 	
+     ctrl+F --> check_exists_bank_payment_cheque_no and add the validation
+  
+//------------------UPLOADED----------------------------------------// 
+
+//sameer - 02-09-2024
+
+1. reporting/reports_main.php (Line 192 to 202)
+2. reporting/rep1040.php (New File to be upload)
+3. inventory/material_indent_request.php
+4. inventory/transfers.php
+5. sales/customer_doinvoice.php
+6. sales/customer_invoice.php
+7. sales/customer_delivery.php
+8. sales/customer_pdc.php
+9. sales/customer_advance_payments.php
+10. sales/customer_payments.php
+11. sales/salesman_collection_entry.php
+
+//sameer - 03-09-2024
+
+1. purchasing/po_entry_items.php
+2. purchasing/supplier_pdc.php
+3. purchasing/supplier_payment.php
+
+
+4. sales/customer_advance_payments.php ->Changed the Page Security
+5. includes/access_levels.inc -> Added Page Securities for Customer Advance With VAT, Return Customer Advance With VAT and Customer Transaction Inquiry
+6. gl/advance_return.php -> Changed the Page Security
+7. sales/inquiry/customer_inquiry.php -> Changed the Page Security 
+9. applications/customers.php -> Changed the Page Securities for some transactions and Inquiries
+
+//------------------UPLOADED-------------------------------//
+//sameer -24-09-2024
+1. reporting/rep110.php - 
+2. reporting/rep111.php - 
+3. reporting/includes/header68.inc - 
+
+Purchasing Files : 25-09-2024
+
+1. purchasing/includes/ui/po_ui.inc -> function display_po_header( -> 	if (!is_company_currency(
+2. purchasing/includes/db/po_db.inc -> function get_po_no_inco_terms(
+3. purchasing/po_invoice_items_multiple_pos.php -> invoice_mheader(
+4. purchasing/includes/ui/invoice_ui.inc -> function invoice_mheader( ->
+5. purchasing/view/view_purchase_voucher.php -> $purch_inco_terms
+
+//------------------UPLOADED-------------------------------//
+
+Purchasing Files : 30-09-2024
+1. purchasing/includes/ui/po_ui.inc -> function display_po_items -> $last_inv, $last_po, $th1, function get_last_inv_det($supplier_id,$stock_id),  function get_last_po_det($supplier_id,$stock_id)
+
+
+//--------------------Uploaded-------------------------//
+23-10-2024 (Sameer)
+
+Bahanis Files:
+1. reporting/rep111.php
+2. sales/inquiry/customer_inquiry.php
+//--------------------Uploaded-------------------------//
+01-11-2024
+Bahanis Files:(Sameer)
+//sameer
+
+Reporting report mains changes:
+
+1.modules/rep_dated_stock/reporting/reports_custom.php
+2.reporting/reports_main.php (Uploaded in Live system)
+
+Reduce the space in the petty cash header from Document No. to SI Number.
+1.reporting/includes/header70.inc
+//------------------UPLOADED--------------------------------//
+
+//Rajesh   Dt:06-11-2024
+1.For supplier and customer codes where dropdown options are displayed, a search feature with code should be added.
+  1.purchasing/manage/suppliers.php  --> "supp_ref"
+  2.purchasing/includes/db/suppliers.db.inc 
+//------------------UPLOADED-------------------------//
+
+sameer:
+supplier Payment Report:
+1. reporting/rep2100.php
+//------------------UPLOADED-------------------------//
+
+
+Date: 07-11-2024  -  BAHANIS  
+
+1. bahanis/includes/access_levels.inc
+2. bahanis/reporting/rep1079.php
+3. bahanis/reporting/includes/doctext.inc
+4. bahanis/reporting/includes/header27.inc
+5. bahanis/reporting/includes/pdf_report.inc
+6. bahanis/reporting/includes/reporting.inc
+
+Added Print Hyperlink :
+
+1. bahanis/gl/gl_bank.php
+2. bahanis/gl/journal.inquiry.php
+3. bahanis/gl/gl_deposit_view.php
+
+
+Date : 08-11-2024
+
+1. bahanis/includes/access_levels.inc
+2. bahanis/reporting/rep1080.php
+3. bahanis/reporting/includes/doctext.inc
+4. bahanis/reporting/includes/header28.inc
+5. bahanis/reporting/includes/pdf_report.inc
+6. bahanis/reporting/includes/reporting.inc
+
+Date: 11-11-2024
+
+1. bahanis/includes/types.inc  
+function payment_person_name_for_reports
+
+//------------------UPLOADED-------------------------//
+
+Rajesh Dt:07-11-2024
+7. Implement a sales order conversion to invoice option similar to the delivery order option, 
+   ensuring that canceling quantities will have a corresponding effect. As we process 300-400 invoices daily, 
+   with returns exceeding 60, this is crucial for our operations
+FILES   
+1.sales/includes/sales_db.inc  
+2.sales/includes/db/sales_invoice_db.inc
+//------------------UPLOADED-------------------------//
+
+Rajesh Dt:11-11-2024
+8.Include reference numbers in transactions and journals as follows:
+Purchase Payment - BP in ledgers, Sales Payment - BR in ledger, 
+Banking and Ledger:
+Deposits - BGR, Payments - BGP, 
+Funds Transfer - BAT, 
+Petty Cash - PC and Journal Entry - JV (for example, JV/001/2024)
+
+FILES 
+1.Changes in pattern in "0_reflines" table
+  Ex: {001}/{YYYY} Changed as BR/{001}/{YYYY} --> trans_type "12"
+
+//------------------UPLOADED-------------------------//
+
+Dt: 28-11-2024  Rajesh
+DB Changes (UPLOADED in server)
+1.Add below fields in "0_sales_orders" table
+  1.cash_cust_name
+  2.cash_cust_mobile
+2.Add "modified_supp_name" field in "0_supp_trans" table
+3.Add "0_cheque_modified_trans" table in DATABASE  
+
+1.Foc quantity in sales order also required and DO number in print   --> "foc_quantity"
+  FILES:
+  1.sales/sales_order_entry.php
+  2.sales/includes/ui/sales_order_ui.inc
+  3.sales/view/view_sales_order.php
+  4.sales/customer_delivery.php
+  5.sales/customer_doinvoice.php
+  6.sales/customer_invoice.php
+  7.reporting/rep109.php
+2.Salesman collection Entry- Cash in hand should come by default in bank accounts
+  FILES:
+  1.sales/includes/ui/salesman_collection_ui.inc
+  2.includes/ui/ui_lists.inc  
+    function bank_accounts_list_trans( 
+  3.sales/includes/db/payment_db.inc
+  4.sales/salesman_collection_entry.php  
+	
+3.Customer PDC Entry - Hide left Reference displaying on system	
+  Ref No.(For Allocation Purpose) value passed in hidden
+  FILES:
+  1.sales/customer_pdc.php
+4.Manual Entry for the customer name at the time of Sales Quotation Transaction.  
+  --> "cash_cust_name" & "cash_cust_mobile"
+  FILES:
+  1.sales/includes/cart_class.inc
+  2.sales/includes/db/sales_order_db.inc
+  3.reporting/includes/pdf_report.inc    --> "cash_cust_name"
+  4.reporting/includes/header71.inc 
+  5.reporting/rep111.php
+5.Customers common link between PDC & payment(Check with the team whether to remove or close)
+  FILES:
+  1.sales/customer_payments.php
+6.Edit the supplier(Subject) name for cheques.  (Cheque Transactions Inquiry)
+  FILES:
+  1.includes/access_levels.inc     --> "SA_CHEQUE_TRANS_INQ"
+  2.applications/suppliers.php     --> "SA_CHEQUE_TRANS_INQ"
+  3.includes/ui/ui_lists.inc       
+    --> "supp_cheque_transactions_list_cell"
+  4.purchasing/inquiry/cheque_transactions_inquiry.php
+  5.purchasing/inquiry/cheque_transaction_update.php
+  6.purchasing/inquiry/bank_cheque_transaction_update.php
+  7.purchasing/includes/db/supp_trans_db.inc
+  8.purchasing\supplier_pdc.php
+  9.gl/gl_bank.php
+  
+7.DO. No(s). repeating display issue in Tax invoice (Check local ref:026/2024)
+  1.sales/includes/db/sales_groups_db.inc
+8.Supplier Payment Entry (PDC info display issue)
+  1.includes/ui/ui_globals.inc  ---> function get_global_supplier_payment(
+  2.purchasing/supplier_payment.php 
+9.FOC quantity is not reducing in stocks, and it should also deduct from available quantity in order screen.
+  1.includes/db/manufacturing_db.inc    --> "foc_quantity"
+  2.sales/includes/db/sales_delivery_db.inc 
+10.Cheque Print hyperlinks given after process the below transactions.
+   1.gl/bank_transfer.php
+//-----------------UPLOADED-------------------------//
+
+//sameer - 28-11-2024
+1. sales/inquiry/customer_inquiry.php
+2. sales/includes/ui/sales_order_ui.inc
+
+29-11-2024
+
+1. reporting/rep2100.php
+2. reporting/includes/header70.inc
+3. reporting/includes/doctext.inc
+4. reporting/rep2113.php
+5. reporting/includes/reporting.inc -> case ST_SUPPPDC:
+6. purchasing/inquiry/supplier_inquiry
+
+02-12-2024
+
+1.gl/bank_transfer.php
+2.gl/inquiry/journal_inquiry.php
+3.reporting/includes/reporting.inc
+4.reporting/rep1081.php
+5.reporting/includes/Header29.inc
+6.reporting/includes/doctext.inc
+7.reporting/includes/pdf_report.inc
+8.includes/types.inc 
+
+
+Cheque Reports:
+1.reporting/rep1082.php
+2.includes/types.inc -> ST_BANKTRANSFER_REP, ST_SUPPAYMENT_REP_TWO,ST_BANKPAYMENT_REP
+3.reporting/includes/header72.inc
+4.reporting/rep1083.php
+5.reporting/includes/header73.inc
+6.reporting/includes/pdf_report.inc
+7.reporting/includes/doctext.inc -> ST_BANKTRANSFER_REP, ST_SUPPAYMENT_REP_TWO
+8.gl/includes/db/gl_db_trans.inc -> function get_cheque_print(
+9.purchasing/inquiry/supplier_inquiry.php
+10.reporting/rep1079.php
+11.reporting/rep1080.php
+12.reporting/rep1081.php
+13.reporting/rep1082.php
+14.reporting/rep1084.php
+15.reporting/includes/header74.inc
+16.reporting/includes/header10.inc
+
+/*
+rep1081.php - Bank Transfer report
+rep1082.php - Bank Transfer cheque report
+rep1083.php - Supplier Payment Cheque Report
+rep1084.php - Bank Payment Cheque Report
+rep1085.php - Supplier PDC Cheque Report
+rep2113.php - Supplier PDC Report 
+*/
+
+05-12-2024
+1.purchasing/inquiry/bank_cheque_transaction_update.php
+2.purchasing/inquiry/cheque_transaction_update.php
+3.purchasing/includes/db/supp_trans_db.inc
+4.bahanis/reporting/includes/reporting.inc
+5.reporting/rep2113.php
+6.includes/access_levels.inc -> 'SA_CHEQUE_REP', 'SA_SUPP_PDC_REP'
+7.reporting/includes/header75.inc
+8.reporting/rep1085.php
+9.reporting/includes/doctext.inc
+10.reporting/includes/pdf_report.inc
+
+//-----------------UPLOADED-------------------------//
+
+//-----------------Not UPLOADED-------------------------//
+//sameer
+
+
+1. Petty Cash Account,Dimension and page number to be remove from the above line in the petty cash print
+2. Page Number should be at the bottom of the report in the petty cash Print.
+
+rep1078.php
+header70.inc
+doctext.inc -> case ST_PETTY_CASH_REPORT:
+
+3. In Delivery Print Customer Name was not displaying correctly resolved the issue.
+reporting/includes/header68.inc
+
+4. Both Cheque print and Normal print required in the payment.
+gl/inquiry/journal_inquiry.php
+purchasing/inquiry/supplier_inquiry.php
+
+5.Sales Order print format should be same as Delivery Note
+reporting/includes/pdf_report.inc -> function Header30()
+reporting/includes/header30.inc
+reporting/rep109.php
+reporting/includes/doctext.inc
+
+//-----------------Not UPLOADED-------------------------//
+Dt: 15-12-2024
+I have completed FOC qty modification in "order to invoice" conversion and "direct invoice modification"  and General purchase order entry functionality except print format. (Ravi;s Work)
+
+
+please check from your end and confirm to rajesh
+
+customer_doinvoice.php - sales/
+sales_order_db.inc -  sales/includes/db
+sales_delivery_db.inc -  sales/includes/db
+sales_db.inc - sales/includes
+cart_class.inc - sales/includes
+sales_invoice_db.inc - sales/includes/db
+customer_invoice.php - sales/
+
+
+db changes:
+
+"foc_qty_sent"  column  in sales_order_details and debtor_trans_details
+
+
+
+db changes:
+
+ref_lines for trans_type 180
+gen_purch_orders  - new table
+gen_purch_order_details  - new table
+ 
+1. suppliers.php   -  applications/
+2. access_levels.inc - includes/
+3. general_po_entry_items.php  - purchasing/
+4. sysnames.inc - includes/
+5. types.inc - includes/
+6.po_ui.inc  - purchasing/includes/ui/
+7.transactions_db.inc - admin/db
+8.gen_po_class.inc - purchasing/includes
+9.purchasing_db.inc -  purchasing/includes
+10. po_db.inc  -purchasing/includes/db
+11.gen_po_search_completed.php - purchasing/inquiry
+12. ui_view.inc - includes/ui/
+13. view_gen_po.php - purchasing/includes/view
+14. reporting.inc - reporting/includes/
+15. rep2090.php - reporting
+
+16.reporting/includes/pdf_report.inc 
+17.reporting/includes/header21.inc
+18.reporting/includes/doctext.inc 
+
+//-----------------Not UPLOADED-------------------------//

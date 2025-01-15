@@ -1,0 +1,4 @@
+[09-Jun-2021 05:49:57 UTC] PHP Parse error:  Invalid numeric literal in /home/xseedtech/public_html/enggdemo/themes/LTE/db/chats.php on line 99
+[09-Jun-2021 05:49:57 UTC] PHP Parse error:  Invalid numeric literal in /home/xseedtech/public_html/enggdemo/themes/LTE/db/chats.php on line 99
+[14-Mar-2023 10:37:24 Asia/Kolkata] PHP Fatal error:  Out of memory (allocated 1310720) (tried to allocate 50330 bytes) in /home/xseedtech/public_html/appliances/includes/session.inc on line 32
+[14-Mar-2023 10:39:04 Asia/Kolkata] PHP Fatal error:  Out of memory (allocated 1310720) (tried to allocate 95 bytes) in /home/xseedtech/public_html/appliances/includes/session.inc on line 32
